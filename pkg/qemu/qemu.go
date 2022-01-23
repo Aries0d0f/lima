@@ -210,11 +210,11 @@ func Cmdline(cfg Config) (string, []string, error) {
 	case limayaml.X8664:
 		cpu := "qemu64"
 		if isNativeArch(*y.Arch) {
-			cpu = "host"
+			// cpu = "host"
 		}
 		args = appendArgsIfNoConflict(args, "-cpu", cpu)
 		if isNativeArch(*y.Arch) {
-			args = appendArgsIfNoConflict(args, "-machine", "q35,accel="+accel)
+			args = appendArgsIfNoConflict(args, "-machine", "q35")
 		} else {
 			// use q35 machine with vmware io port disabled.
 			args = appendArgsIfNoConflict(args, "-machine", "q35,vmport=off")
